@@ -1,4 +1,4 @@
-import { ADD_DATA, ADD_DATA_ERR } from "../Type";
+import { ADD_DIALY_DATA,ADD_DIALY_DATA_ERR, ADD_CLIMAT_DATA,ADD_CLIMAT_DATA_ERR} from "../Type";
 
 //Add new daily_search
 export const dialy_Data = (data) => {
@@ -13,10 +13,10 @@ export const dialy_Data = (data) => {
         date: new Date(),
       })
       .then(() => {
-        dispatch({ type: ADD_DATA, data });
+        dispatch({ type: ADD_DIALY_DATA, data });
       })
       .catch((err) => {
-        dispatch({ type: ADD_DATA_ERR, err });
+        dispatch({ type: ADD_DIALY_DATA_ERR, err });
       });
   };
 };
@@ -34,10 +34,10 @@ export const clim_Data = (data) => {
         date: new Date(),
       })
       .then(() => {
-        dispatch({ type: ADD_DATA, data });
+        dispatch({ type: ADD_CLIMAT_DATA, data });
       })
       .catch((err) => {
-        dispatch({ type: ADD_DATA_ERR, err });
+        dispatch({ type: ADD_CLIMAT_DATA_ERR, err });
       });
   };
 };
