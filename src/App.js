@@ -1,5 +1,6 @@
 import React from "react";
 import Forecast from "./Forecast";
+import TestScript from "./TestScript";
 
 
 class App extends React.Component {
@@ -9,6 +10,7 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <Forecast />
+        {/* <TestScript /> */}
       </React.Fragment>
     );
   }
