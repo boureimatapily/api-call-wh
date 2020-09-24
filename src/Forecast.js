@@ -9,17 +9,12 @@ class Forecast extends React.Component {
     this.state = {
       cities_data: [],
       climacell_data: [],
-     
     };
   }
 
-  // add = () => {
-  //   this.props.dialy_Data, clim_Data (this.state.data);
-  // };
   componentDidMount() {
     // this.getCities_api();
     // this.getClimacell_api()
-   
   }
   getCities_api = () => {
     fetch(
@@ -65,7 +60,6 @@ class Forecast extends React.Component {
         console.log(err);
       });
   };
-  
 
   render() {
     console.log("hello");

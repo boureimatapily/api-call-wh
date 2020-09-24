@@ -1,57 +1,41 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import { BrowserRouter as Router} from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
-import { ReactReduxFirebaseProvider} from "react-redux-firebase";
+import { ReactReduxFirebaseProvider } from "react-redux-firebase";
 
-import store from './redux/Store';
+import store from "./redux/Store";
 import firebase from "./Config/fbconfig";
 import { createFirestoreInstance } from "redux-firestore";
-
-
-
 
 // react-redux-firebase config
 const rrfConfig = {
   userProfile: "users", // where profiles are stored in database
   useFirestoreForProfile: true, // Firestore for Profile instead of Realtime DB
-  // enableClaims: true, // Get custom claims along with the profile
-  // presence: "presence", // where list of online users is stored in database
-  sessions: "sessions"
+    sessions: "sessions",
 };
 
 const rrfProps = {
   firebase,
   config: rrfConfig,
   dispatch: store.dispatch,
-  createFirestoreInstance // <- needed if using firestore
+  createFirestoreInstance, // <- needed if using firestore
 };
-
-
-// const theme = createMuiTheme();
-
-
-
-
 
 ReactDOM.render(
   <React.StrictMode>
-   <Provider store={store}>
-    <ReactReduxFirebaseProvider {...rrfProps}>
-      {/* <MuiThemeProvider theme={theme}> */}
+    <Provider store={store}>
+      <ReactReduxFirebaseProvider {...rrfProps}>
         <Router>
-          {/* <AuthIsLoaded> */}
-            <App />
-          {/* </AuthIsLoaded> */}
+          <App />
         </Router>
-      {/* </MuiThemeProvider> */}
-    </ReactReduxFirebaseProvider>
-  </Provider>
+      </ReactReduxFirebaseProvider>
+    </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
