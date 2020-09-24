@@ -1,31 +1,20 @@
-let initialState = {
+import {
+  ADD_DATA,
+  ADD_DATA_ERR
+} from "../Type";
+
+
+const UserReducer = (state = {}, action) => {
+  switch (action.type) {
+    case ADD_DATA:
+      alert("infos added");
+      return state;
+    case ADD_DATA_ERR:
+      alert("an error occured");
+      return state;
     
-    accounts:[],
-    loading: true
-}
-
-
-export default (state = initialState, action)=>{
-    // switch(action.type){
-    //     case "ADD_ACCOUNT":
-    //         console.log('add')
-    //         return [...state, action.payload]
-
-    //     case "DELETE_ACCOUNT":
-    //          return state.filter((account)=>{
-    //              return account.id!==action.payload
-    //          })
-    //     case "EDIT_ACCOUNT":
-    //         return state.map(account=>{
-    //             if(account.id===action.payload.id)
-    //                 return action.payload;
-    //             return account;
-
-    //         })
-    //     case "UPDATE_ALL_ACCOUNTS":
-    //             return {accounts:action.payload, loading: false}
-            
-    //     default:
-    //         return state;
-    // }
-}
+    default:
+      return state;
+  }
+};
+export default UserReducer;

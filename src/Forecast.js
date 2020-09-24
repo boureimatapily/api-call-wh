@@ -1,7 +1,8 @@
 import React from "react";
-import { addData } from "./redux/Actions/userActions";
 // import firebase from "./Config/fbconfig"
 import { connect } from "react-redux";
+import { dialy_Data, clim_Data  } from "./redux/Actions/UserActions";
+
 
 class Forecast extends React.Component {
   constructor(props) {
@@ -13,12 +14,12 @@ class Forecast extends React.Component {
     };
   }
 
-  add = () => {
-    this.props.addData(this.state.data);
-  };
+  // add = () => {
+  //   this.props.dialy_Data, clim_Data (this.state.data);
+  // };
   componentDidMount() {
     // this.getCities_api();
-    // this.getClimacell_api()
+    this.getClimacell_api()
     // this.getvisual_crossing_api();
   }
   getCities_api = () => {
@@ -37,6 +38,7 @@ class Forecast extends React.Component {
       .then((response) => {
         console.log(response);
         this.setState({ cities_data: response });
+        this.props.dialy_Data(response);
       })
       .catch((err) => {
         console.log(err);
@@ -58,6 +60,7 @@ class Forecast extends React.Component {
       .then((response) => {
         console.log(response);
         this.setState({ climacell_data: response });
+        this.props.clim_Data (this.state.climacell_data[0]);
       })
       .catch((err) => {
         console.log(err);
@@ -99,4 +102,4 @@ class Forecast extends React.Component {
   }
 }
 
-export default connect(null, { addData })(Forecast);
+export default connect(null, { dialy_Data, clim_Data  })(Forecast);

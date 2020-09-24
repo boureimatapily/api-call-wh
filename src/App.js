@@ -1,6 +1,6 @@
 import React from "react";
 import Forecast from "./Forecast";
-import TestScript from "./TestScript";
+// import TestScript from "./TestScript";
 
 
 class App extends React.Component {
