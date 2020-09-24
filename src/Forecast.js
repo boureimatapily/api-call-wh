@@ -1,8 +1,7 @@
 import React from "react";
 // import firebase from "./Config/fbconfig"
 import { connect } from "react-redux";
-import { dialy_Data, clim_Data  } from "./redux/Actions/UserActions";
-
+import { dialy_Data, clim_Data } from "./redux/Actions/UserActions";
 
 class Forecast extends React.Component {
   constructor(props) {
@@ -10,7 +9,7 @@ class Forecast extends React.Component {
     this.state = {
       cities_data: [],
       climacell_data: [],
-      visual_crossing: [],
+     
     };
   }
 
@@ -19,8 +18,8 @@ class Forecast extends React.Component {
   // };
   componentDidMount() {
     // this.getCities_api();
-    this.getClimacell_api()
-    // this.getvisual_crossing_api();
+    // this.getClimacell_api()
+   
   }
   getCities_api = () => {
     fetch(
@@ -36,7 +35,7 @@ class Forecast extends React.Component {
     )
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         this.setState({ cities_data: response });
         this.props.dialy_Data(response);
       })
@@ -60,32 +59,13 @@ class Forecast extends React.Component {
       .then((response) => {
         console.log(response);
         this.setState({ climacell_data: response });
-        this.props.clim_Data (this.state.climacell_data[0]);
+        this.props.clim_Data(this.state.climacell_data[0]);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  getvisual_crossing_api = () => {
-    fetch(
-      "https://visual-crossing-weather.p.rapidapi.com/history?dayStartTime=8%253A00%253A00&contentType=csv&dayEndTime=17%253A00%253A00&shortColumnNames=false&startDateTime=2019-01-01T00%253A00%253A00&aggregateHours=24&location=Washington%252CDC%252CUSA&endDateTime=2019-01-03T00%253A00%253A00&unitGroup=us",
-      {
-        method: "GET",
-        headers: {
-          "x-rapidapi-host": "visual-crossing-weather.p.rapidapi.com",
-          "x-rapidapi-key":
-            "bf6a3aad0emsh48e9f2705dc53c9p1a103ejsne9dfd9c37fe6",
-        },
-      }
-    )
-      .then((response) => {
-        console.log(response);
-        this.setState({visual_crossing: response});
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  
 
   render() {
     console.log("hello");
@@ -93,7 +73,6 @@ class Forecast extends React.Component {
       <React.Fragment>
         <div className="weather_all_cities">
           <h2>Find Current Weather Conditions for all cities</h2>
-          <div>{JSON.stringify(this.state.visual_crossing)}</div>
           <div>{JSON.stringify(this.state.cities_data)}</div>
           <div>{JSON.stringify(this.state.climacell_data)}</div>
         </div>
@@ -102,4 +81,4 @@ class Forecast extends React.Component {
   }
 }
 
-export default connect(null, { dialy_Data, clim_Data  })(Forecast);
+export default connect(null, { dialy_Data, clim_Data })(Forecast);
