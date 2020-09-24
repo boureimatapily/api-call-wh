@@ -13,8 +13,8 @@ class Forecast extends React.Component {
   }
 
   componentDidMount() {
-    // this.getCities_api();
-    // this.getClimacell_api()
+    this.getCities_api();
+    this.getClimacell_api()
   }
   getCities_api = () => {
     fetch(
@@ -65,11 +65,11 @@ class Forecast extends React.Component {
     console.log("hello");
     return (
       <React.Fragment>
-        <div className="weather_all_cities">
+        {/* <div className="weather_all_cities">
           <h2>Find Current Weather Conditions for all cities</h2>
           <div>{JSON.stringify(this.state.cities_data)}</div>
           <div>{JSON.stringify(this.state.climacell_data)}</div>
-        </div>
+        </div> */}
       </React.Fragment>
     );
   }

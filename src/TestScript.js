@@ -14,9 +14,9 @@ class TestScript extends React.Component {
   }
  
   render() {
-    console.log( Forecast.getCities_api());
-    console.log( Forecast.getClimacell_api());
-     console.log(  Forecast.getvisual_crossing_api());
+    // console.log( Forecast.getCities_api());
+    // console.log( Forecast.getClimacell_api());
+    //  console.log( Forecast.getClimacell_api());
     return (
       <React.Fragment>
         
